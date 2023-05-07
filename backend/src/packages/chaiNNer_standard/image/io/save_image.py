@@ -114,6 +114,8 @@ class JpegSubsampling(Enum):
             )(
                 BoolInput("Separate Alpha for Mip Maps", default=False).with_id(13),
             ),
+            BoolInput("Convert input to sRGB", default=False),
+            BoolInput("Convert output to sRGB", default=False),
         ),
     ],
     outputs=[],
@@ -134,6 +136,8 @@ def save_image_node(
     dds_dithering: bool,
     dds_mipmap_levels: int,
     dds_separate_alpha: bool,
+    dds_srgbi: bool,
+    dds_srgbo: bool,
 ) -> None:
     """Write an image to the specified path and return write status"""
 
@@ -170,6 +174,8 @@ def save_image_node(
             maximum_compression=dds_bc7_compression == BC7Compression.BEST_QUALITY,
             dx9=legacy_dds,
             separate_alpha=dds_separate_alpha,
+            srgbi=dds_srgbi,
+            srgbo=dds_srgbo,
         )
         return
 

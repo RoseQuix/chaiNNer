@@ -99,6 +99,8 @@ def save_as_dds(
     maximum_compression: bool = False,
     dx9: bool = False,
     separate_alpha: bool = False,
+    srgbi: bool = False,
+    srgbo: bool = False,
 ):
     """
     Saves an image as DDS using texconv.
@@ -135,8 +137,10 @@ def save_as_dds(
         if bc:
             args.extend(["-bc", f"-{bc}"])
 
-        if dds_format in SRGB_FORMATS:
+        if srgbi:
             args.append("-srgbi")
+        if srgbo:
+            args.append("-srgbo")
 
         if separate_alpha:
             args.append("-sepalpha")
