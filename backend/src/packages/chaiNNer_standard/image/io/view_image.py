@@ -18,7 +18,6 @@ from .. import io_group
         LargeImageOutput(
             "Preview",
             image_type="Input0",
-            has_handle=False,
             assume_normalized=True,
         ),
     ],
