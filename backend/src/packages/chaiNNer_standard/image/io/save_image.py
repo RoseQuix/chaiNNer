@@ -114,8 +114,8 @@ class JpegSubsampling(Enum):
             )(
                 BoolInput("Separate Alpha for Mip Maps", default=False).with_id(13),
             ),
-            BoolInput("Convert input to sRGB", default=False),
-            BoolInput("Convert output to sRGB", default=False),
+            BoolInput("Input is in sRGB", default=False),
+            BoolInput("Output is in sRGB", default=False),
             BoolInput("Pre-Multiply Alpha Channel", default=False),
         ),
     ],
