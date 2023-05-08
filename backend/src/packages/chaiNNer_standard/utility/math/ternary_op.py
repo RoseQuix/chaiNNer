@@ -7,9 +7,9 @@ from .. import math_group
 
 @math_group.register(
     schema_id="chainner:utility:ternary",
-    name="Conditional",
+    name="Choose (Conditional)",
     description="Select a value based on a boolean input",
-    icon="MdQuiz",
+    icon="MdFlaky",
     inputs=[
         BoolInput("Test", has_handle=True),
         AnyInput("When True"),
