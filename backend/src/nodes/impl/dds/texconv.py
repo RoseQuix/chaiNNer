@@ -101,6 +101,7 @@ def save_as_dds(
     separate_alpha: bool = False,
     srgbi: bool = False,
     srgbo: bool = False,
+    pmalpha: bool = False,
 ):
     """
     Saves an image as DDS using texconv.
