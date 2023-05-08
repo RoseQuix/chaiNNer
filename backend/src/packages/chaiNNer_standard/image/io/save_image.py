@@ -116,6 +116,7 @@ class JpegSubsampling(Enum):
             ),
             BoolInput("Convert input to sRGB", default=False),
             BoolInput("Convert output to sRGB", default=False),
+            BoolInput("Pre-Multiply Alpha Channel", default=False),
         ),
     ],
     outputs=[],
@@ -138,6 +139,7 @@ def save_image_node(
     dds_separate_alpha: bool,
     dds_srgbi: bool,
     dds_srgbo: bool,
+    dds_pmalpha: bool,
 ) -> None:
     """Write an image to the specified path and return write status"""
 
@@ -176,6 +178,7 @@ def save_image_node(
             separate_alpha=dds_separate_alpha,
             srgbi=dds_srgbi,
             srgbo=dds_srgbo,
+            pmalpha=dds_pmalpha,
         )
         return
 
