@@ -60,8 +60,9 @@ class DropDownInput(BaseInput):
         default_value: str | int | None = None,
         preferred_style: DropDownStyle = "dropdown",
         associated_type: Union[Type, None] = None,
+        has_handle: bool = False,
     ):
-        super().__init__(input_type, label, kind="dropdown", has_handle=False)
+        super().__init__(input_type, label, kind="dropdown", has_handle=has_handle)
         self.options = options
         self.accepted_values = {o["value"] for o in self.options}
         self.default = (
@@ -96,7 +97,7 @@ class DropDownInput(BaseInput):
 
 
 class BoolInput(DropDownInput):
-    def __init__(self, label: str, default: bool = True):
+    def __init__(self, label: str, default: bool = True, has_handle: bool = False):
         super().__init__(
             input_type="bool",
             label=label,
@@ -114,6 +115,7 @@ class BoolInput(DropDownInput):
                 },
             ],
             preferred_style="checkbox",
+            has_handle=has_handle,
         )
         self.associated_type = bool
 
@@ -290,8 +292,8 @@ class ClipboardInput(BaseInput):
 
 
 class AnyInput(BaseInput):
-    def __init__(self, label: str):
-        super().__init__(input_type="any", label=label)
+    def __init__(self, label: str, input_type: expression.ExpressionJson = "any"):
+        super().__init__(input_type=input_type, label=label)
         self.associated_type = object
 
     def enforce_(self, value):

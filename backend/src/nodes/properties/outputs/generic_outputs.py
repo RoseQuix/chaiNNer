@@ -9,6 +9,23 @@ from .. import expression
 from .base_output import BaseOutput
 
 
+class BoolOutput(BaseOutput):
+    def __init(self, label: str, output_type: expression.ExpressionJson = "bool"):
+        super().__init__(
+            expression.intersect("bool", output_type),
+            label,
+            associated_type=bool,
+        )
+
+    def get_broadcast_type(self, value: bool):
+        return expression.literal("True" if value else "False")
+
+    def enforce(self, value) -> bool:
+        assert isinstance(value, (bool, str))
+        if isinstance(value, str):
+            value = (value == "True")
+        return value
+
 class NumberOutput(BaseOutput):
     def __init__(
         self,
