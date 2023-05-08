@@ -6,7 +6,7 @@ import { InputProps } from './props';
 
 type DropDownInputProps = InputProps<'dropdown', string | number>;
 
-export const DropDownInput = memo(({ value, setValue, input, isLocked }: DropDownInputProps) => {
+export const DropDownInput = memo(({ value, setValue, input, isLocked, useInputConnected }: DropDownInputProps) => {
     const { options, def, label, preferredStyle } = input;
 
     const reset = useCallback(() => setValue(def), [setValue, def]);
@@ -22,6 +22,7 @@ export const DropDownInput = memo(({ value, setValue, input, isLocked }: DropDow
                     value={value}
                     yes={options[0]}
                     onChange={setValue}
+                    isDisabled={isLocked||useInputConnected()}
                 />
             </WithoutLabel>
         );
