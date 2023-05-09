@@ -143,6 +143,8 @@ def save_as_dds(
         if srgbo:
             args.append("-srgbo")
 
+        if pmalpha:
+            args.append("-pmalpha")
         if separate_alpha:
             args.append("-sepalpha")
 
